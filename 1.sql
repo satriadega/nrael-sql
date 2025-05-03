@@ -45,3 +45,14 @@ SELECT
 FROM IPLogs
 WHERE LENGTH(ipAddress) - LENGTH(REPLACE(ipAddress, ':', '')) BETWEEN 2 AND 7
 ORDER BY ipBin ASC;
+
+-- this doesn't work if same column
+SELECT * FROM Categories c WHERE c.id = 1 AND c.id = 2;
+-- select where id is 1 or 2
+SELECT * FROM Categories c WHERE c.id = 1 OR c.id = 2;
+
+-- The NOT operator is used in combination with other operators to give the opposite result, also called the negative result.
+SELECT countryName  FROM IPLogs i WHERE NOT countryName = 'Indonesia';
+SELECT countryName FROM IPLogs i WHERE countryName NOT LIKE 'C%' ORDER BY countryName ASC;
+SELECT countryName FROM IPLogs i WHERE countryName NOT IN ('Germany', 'Hong Kong') ORDER BY countryName ASC;
+SELECT * FROM IPLogs i WHERE i.id NOT BETWEEN 5 AND 10;
